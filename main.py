@@ -40,7 +40,7 @@ async def analyze_review(request: ReviewRequest):
 
     try:
         response = await client.chat.completions.create(
-            model="qwen/qwen3-235b-a22b-thinking-2507",
+            model="openrouter/hunter-alpha",
             messages=[
                 {"role": "system", "content": system_prompt},
                 {"role": "user", "content": f"Проанализируй этот отзыв: '{request.text}'"}
