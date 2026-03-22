@@ -18,6 +18,7 @@ class ReviewRequest(BaseModel):
     temperature: float = Field(0.3, ge=0.0, le=2.0, description="Температура генерации")
 
 class ReviewResponse(BaseModel):
+    thought_process: str = Field(..., description="Твои рассуждения: почему такая тональность и срочность?")
     sentiment: str = Field(..., description="Тональность: positive, negative или neutral")
     urgency: int = Field(..., description="Срочность реакции от 1 до 10")
     issues: list[str] = Field(..., description="Список проблем, упомянутых в отзыве")
@@ -36,6 +37,7 @@ async def analyze_review(request: ReviewRequest):
         "issues":["проблема 1", "проблема 2"],
         "suggested_reply": "Текст вежливого ответа клиенту..."
     }
+    Сначала напиши свои рассуждения в поле thought_process, а затем заполняй остальные поля.
     """
 
     try:
